@@ -16,10 +16,12 @@
 
 package com.epam.ta.reportportal.job;
 
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.dao.ActivityRepository;
 import com.epam.ta.reportportal.dao.LaunchRepository;
 import com.epam.ta.reportportal.entity.project.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +37,7 @@ import static com.epam.ta.reportportal.commons.EntityUtils.TO_LOCAL_DATE_TIME;
  * @author <a href="mailto:ivan_budayeu@epam.com">Ivan Budayeu</a>
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class LaunchCleanerServiceImpl implements LaunchCleanerService {
 
 	private final LaunchRepository launchRepository;

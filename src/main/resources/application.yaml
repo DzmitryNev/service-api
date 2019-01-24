@@ -55,7 +55,7 @@ rp:
     addresses: amqp://${rp.amqp.user}:${rp.amqp.pass}@${rp.amqp.host}:${rp.amqp.port}
     api-address: http://${rp.amqp.apiuser}:${rp.amqp.apipass}@${rp.amqp.host}:${rp.amqp.apiport}/api
 
-    host: rabbitmq
+    host: localhost
     port: 5672
     user: rabbitmq
     pass: rabbitmq

@@ -31,9 +31,9 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import springfox.documentation.PathProvider;
@@ -80,7 +80,7 @@ import static springfox.documentation.spi.schema.contexts.ModelContext.inputPara
 @Configuration
 @Conditional(Conditions.NotTestCondition.class)
 @EnableSwagger2
-@ComponentScan(basePackages = "com.epam.ta.reportportal.ws.controller")
+@Profile("!test")
 public class Swagger2Configuration {
 
 	@Autowired

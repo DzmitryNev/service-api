@@ -16,7 +16,9 @@
 
 package com.epam.ta.reportportal.job;
 
+import com.epam.ta.reportportal.core.configs.Conditions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ import org.springframework.stereotype.Service;
  * @author Andrei Varabyeu
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class JobExecutorDelegate {
 
 	/**

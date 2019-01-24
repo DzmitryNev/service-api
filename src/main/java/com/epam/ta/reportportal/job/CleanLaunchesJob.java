@@ -19,6 +19,7 @@ package com.epam.ta.reportportal.job;
 import com.epam.ta.reportportal.commons.querygen.Condition;
 import com.epam.ta.reportportal.commons.querygen.Filter;
 import com.epam.ta.reportportal.commons.querygen.FilterCondition;
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.core.configs.SchedulerConfiguration;
 import com.epam.ta.reportportal.dao.ProjectRepository;
 import com.epam.ta.reportportal.entity.enums.KeepLaunchDelay;
@@ -33,6 +34,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -49,6 +51,7 @@ import static com.epam.ta.reportportal.job.PageUtil.iterateOverPages;
  * @author <a href="mailto:ivan_budayeu@epam.com">Ivan Budayeu</a>
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class CleanLaunchesJob implements Job {
 
 	public static final int DEFAULT_THREAD_COUNT = 5;

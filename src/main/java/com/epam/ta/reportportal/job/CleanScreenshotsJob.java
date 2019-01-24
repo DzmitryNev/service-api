@@ -19,6 +19,7 @@ package com.epam.ta.reportportal.job;
 import com.epam.ta.reportportal.commons.querygen.Condition;
 import com.epam.ta.reportportal.commons.querygen.Filter;
 import com.epam.ta.reportportal.commons.querygen.FilterCondition;
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.dao.ProjectRepository;
 import com.epam.ta.reportportal.entity.enums.KeepScreenshotsDelay;
 import com.epam.ta.reportportal.entity.enums.ProjectAttributeEnum;
@@ -29,6 +30,7 @@ import org.quartz.JobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -44,6 +46,7 @@ import static java.time.Duration.ofDays;
  * @author Andrei_Ramanchuk
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class CleanScreenshotsJob implements Job {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CleanScreenshotsJob.class);
 

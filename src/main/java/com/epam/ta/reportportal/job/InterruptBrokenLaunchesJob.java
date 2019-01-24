@@ -19,6 +19,7 @@ package com.epam.ta.reportportal.job;
 import com.epam.ta.reportportal.commons.querygen.Condition;
 import com.epam.ta.reportportal.commons.querygen.Filter;
 import com.epam.ta.reportportal.commons.querygen.FilterCondition;
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.dao.LaunchRepository;
 import com.epam.ta.reportportal.dao.LogRepository;
 import com.epam.ta.reportportal.dao.ProjectRepository;
@@ -31,6 +32,7 @@ import com.epam.ta.reportportal.exception.ReportPortalException;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +54,7 @@ import static java.time.Duration.ofHours;
  * @author Andrei Varabyeu
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class InterruptBrokenLaunchesJob implements Job {
 
 	private final LaunchRepository launchRepository;

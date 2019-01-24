@@ -18,6 +18,7 @@ package com.epam.ta.reportportal.job;
 
 import com.epam.ta.reportportal.binary.DataStoreService;
 import com.epam.ta.reportportal.commons.BinaryDataMetaInfo;
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.dao.LogRepository;
 import com.epam.ta.reportportal.entity.log.Log;
 import com.epam.ta.reportportal.exception.ReportPortalException;
@@ -27,6 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,7 @@ import java.util.Optional;
  */
 @Service("saveBinaryDataJob")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Conditional(Conditions.NotTestCondition.class)
 public class SaveBinaryDataJob implements Runnable {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SaveBinaryDataJob.class);

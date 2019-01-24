@@ -17,6 +17,7 @@
 package com.epam.ta.reportportal.job;
 
 import com.epam.ta.reportportal.binary.DataStoreService;
+import com.epam.ta.reportportal.core.configs.Conditions;
 import com.epam.ta.reportportal.dao.ActivityRepository;
 import com.epam.ta.reportportal.dao.LaunchRepository;
 import com.epam.ta.reportportal.dao.LogRepository;
@@ -26,6 +27,7 @@ import com.epam.ta.reportportal.entity.project.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +49,7 @@ import static java.util.Optional.ofNullable;
  * @author <a href="mailto:ivan_budayeu@epam.com">Ivan Budayeu</a>
  */
 @Service
+@Conditional(Conditions.NotTestCondition.class)
 public class LogCleanerServiceImpl implements LogCleanerService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LogCleanerServiceImpl.class);
